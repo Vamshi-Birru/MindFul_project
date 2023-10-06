@@ -26,7 +26,8 @@ export default function Login() {
     }
     const letsDoIt = async () => {
         try {
-            const response = await axios.post('http://localhost:8080/login', { username, password });
+            const email=username;
+            const response = await axios.post('http://localhost:8080/login', { email, password });
             const userId=response.data;
             localStorage.setItem("userId",userId);
             localStorage.setItem("username",username);

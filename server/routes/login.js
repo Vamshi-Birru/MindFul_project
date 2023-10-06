@@ -4,16 +4,16 @@ const User = require("../models/User");
 const router = express.Router();
 router.post("/", async (req, res) => {
   try {
-    if (req.body.Email === null) res.status(404).send("Incorrect username");
+    if (req.body.email === null) res.status(404).send("Incorrect email");
     else {
-      const user = await User.findOne({ Email: req.body.Email });
+      const user = await User.findOne({ email: req.body.email });
       if (!user) {
         res.status(404).send("Incorrect username");
       }
       else {
-        if (req.body.Password === null) res.status(404).send("Incorrect password");
+        if (req.body.password === null) res.status(404).send("Incorrect password");
         else {
-          const ispassword = await bcrypt.compare(req.body.Password, user.Password);
+          const ispassword = await bcrypt.compare(req.body.password, user.password);
           if (!ispassword) {
             res.status(404).send("Incorrect password");
           }
