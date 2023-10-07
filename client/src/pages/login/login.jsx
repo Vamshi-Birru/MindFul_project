@@ -28,12 +28,10 @@ export default function Login() {
         try {
             const email=username;
             const response = await axios.post('http://localhost:8080/login', { email, password });
-            const userId=response.data;
-            localStorage.setItem("userId",userId);
-            localStorage.setItem("username",username);
-            updateUser({userId,username});
+            const userId=response.data._id;
+            const name=response.data.name;
+            updateUser({userId,name});
             navigate("/Home");
-
 
         }
         catch (err) {

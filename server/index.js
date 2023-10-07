@@ -3,6 +3,7 @@ const mongoose=require("mongoose");
 const cors =require ('cors');
 const UserLogin=require("./routes/login");
 const UserRegister=require("./routes/register");
+const crud =require("./routes/crud")
 const app=express();
 require('dotenv').config();
 const url=process.env.MONGODB_URL;
@@ -21,6 +22,7 @@ app.use(cors());
 // app.use("/delete",Delete);
 app.use("/login",UserLogin);
 app.use("/register",UserRegister);
+app.use("/crud",crud);
 app.listen(8080,()=>{
     console.log("It's connected");
 })
